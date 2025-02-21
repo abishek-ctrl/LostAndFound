@@ -3,7 +3,6 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-
 //Register
 const registerUser = async (req, res) =>{
     try{
@@ -40,13 +39,12 @@ const registerUser = async (req, res) =>{
     }catch(e){
         console.error(e);
         res.status(500).json({
-            message: "Internal Server Error",
+            message: "User not created. Try again bro!",
         });
     }
 };
 
 //Login 
-
 const loginUser = async(req, res) =>{
     try{
         const {username, password} = req.body;
@@ -85,11 +83,12 @@ const loginUser = async(req, res) =>{
     }catch(e){
         console.error(e);
         res.status(500).json({
-            message: "Internal Server Error",
+            message: "Couldn't login. Try again!",
         });
     }
 }
 
+//Change Password
 const changePassword = async(req, res) =>{
     try{
         const {oldPassword, newPassword} = req.body;
@@ -116,7 +115,7 @@ const changePassword = async(req, res) =>{
     }catch(e){
         console.error(e);
         res.status(500).json({
-            message: "Internal Server Error",
+            message: "Couldn't change the password. Try again!",
         });
     }
 };
